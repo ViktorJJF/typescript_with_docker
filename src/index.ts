@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express();
 
-let a:number=4;
+let a: number = 4;
 
 app.get('/', (req, res) => {
   const name = process.env.NAME || 'World';
@@ -23,4 +23,4 @@ function sayHallo(name: string): string {
 }
 
 // this will fail
-// sayHallo(a)
+// sayHallo(a);

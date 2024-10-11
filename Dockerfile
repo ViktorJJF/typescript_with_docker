@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-# Install dependencies using npm ci (faster for CI/CD and clean installs)
+# Install dependencies using npm ci
 RUN npm ci
 
 # Copy the rest of the application code
@@ -16,9 +16,11 @@ COPY . .
 # Build the TypeScript files
 RUN npm run build
 
-
 # Stage 2: Create the production image
 FROM node:18-alpine
+
+# Install bash if necessary
+RUN apk add --no-cache bash
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
